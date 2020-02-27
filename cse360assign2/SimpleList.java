@@ -1,12 +1,16 @@
 // Author Name: Nicholas Tang
 // Class ID: 212
-// Assignment 1
+// Assignment 2
+// Repository: https://github.com/nicktang0525/cse360/tree/master/cse360assign2
 // Description: Class SimpleList represents a list and has methods to add and remove elements,
 //  return the number of elements, return a string of the elements in the list, and search for
-//  an individual element.
-package testquestion;
+//  an individual element. 
+
+package simpleList2;
+import java.util.Arrays;
+
 public class SimpleList {
-    //Class Variables
+	//Class Variables
     private int[] list;
     private int count;
 
@@ -20,28 +24,30 @@ public class SimpleList {
 
     //method to add a new number to the beginning of the list and shift the others down one
     public void add(int number){
-        //if count is 10, change last element to 0 and decrement count by 1
-    	if(count == 10) {
-    		list[9] = 0;
-        	count = count - 1;
-    	}
-    	
-    	//If list is empty, set first element to number
+    	//increase count by one since there is a new element in the list
+        count = count + 1;
+
+        //If list is  full, increase size by 50%
+        if(count > list.length){
+        	//set the length of the new list
+            int biggerList = list.length + (list.length / 2);
+            //copy of lsit with +50% length
+            list = Arrays.copyOf(list, biggerList);
+        }
+
+        //If list is empty, set first element to number
         if(count == 0){
             list[0] = number;
         }
         else{
             //for loop to move all of the elements up one index in the array
-            for(int index = count; index > 0; index--){
+            for(int index = count - 1; index > 0; index--){
                 list[index] = list[index - 1];
             }
         }
 
         //add input to the first element in the array
         list[0] = number;
-
-        //increase count by one since there is a new element in the list
-        count = count + 1;
     }
 
     //method to remove a number from list and shift elements down as needed
@@ -72,6 +78,15 @@ public class SimpleList {
                 }
                 //if number was removed, decrease count by one
                 count = count - 1;
+                
+                //If list is at or less than 75% capacity, shrink list to 75% size
+                //Set length of 75% of list
+                int shrinkList = list.length * 3 / 4;
+                if(count < shrinkList) {
+                	//if list is less than 75% length,
+                	//Make a copy of it with length of 75% of original
+                	list = Arrays.copyOf(list, shrinkList);
+                }
             }
         }
     }
@@ -117,5 +132,34 @@ public class SimpleList {
             }
         }
         return location;
+    }
+    
+    //method to apend parameter to the end of the list
+    //if the list is full, increase size by 50%
+    public void append(int number) {
+    	//increase count by one since a new element will be added
+    	count = count + 1;
+    	//If list is  full, increase size by 50%
+        if(count > list.length){
+        	//set the length of the new list
+            int biggerList = list.length + (list.length / 2);
+            //copy of list with +50% length
+            list = Arrays.copyOf(list, biggerList);
+        }
+    	
+        //add parameter to to the end of list
+    	list[count - 1] = number;
+    }
+    
+    //method to return the first element of the list
+    public int first() {
+    	//return first element of list
+    	return list[0];
+    }
+    
+    //method to return the size of the number of possible positions
+    public int size() {
+    	//return length of the list
+    	return list.length;
     }
 }
