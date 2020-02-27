@@ -151,10 +151,30 @@ public class SimpleList {
     	list[count - 1] = number;
     }
     
-    //method to return the first element of the list
+    //method to return the first element of the list and -1 if list is empty
     public int first() {
-    	//return first element of list
-    	return list[0];
+    	//return -1 by default
+    	int first = -1;
+    	
+    	//if list is not empty, return list[0]
+    	if(count > 0) {
+    		first = list[0];
+    	}
+    	
+    	return first;
+    }
+    
+    //method to return last element of the list and -1 if list is empty
+    public int last() {
+    	//return -1 by default
+    	int last = -1;
+    	
+    	//if list is not empty, return list[count - 1] (last element in the list
+    	if(count > 0) {
+    		last = list[count - 1];
+    	}
+    	
+    	return last;
     }
     
     //method to return the size of the number of possible positions

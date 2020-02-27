@@ -32,6 +32,33 @@ public class SimpleListTest {
 	}
 	
 	@Test
+//	test to check if function first is working properly
+	public void testFirstEmpty() {
+		SimpleList testList = new SimpleList();
+		
+		assertEquals(-1, testList.first());
+	}
+	
+	@Test
+//	test to check if function last is working properly
+	public void testLast() {
+		SimpleList testList = new SimpleList();
+		
+		testList.add(1);
+		testList.add(2);
+		
+		assertEquals(1, testList.last());
+	}
+	
+	@Test
+//	test to check if function last is working properly
+	public void testLastEmpty() {
+		SimpleList testList = new SimpleList();
+		
+		assertEquals(-1, testList.last());
+	}
+	
+	@Test
 //	test to check if function size is working properly
 	public void testSizet() {
 		SimpleList testList = new SimpleList();
