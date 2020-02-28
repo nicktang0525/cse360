@@ -4,7 +4,11 @@
 // Repository: https://github.com/nicktang0525/cse360/tree/master/cse360assign2
 // Description: Class SimpleList represents a list and has methods to add and remove elements,
 //  return the number of elements, return a string of the elements in the list, and search for
-//  an individual element. 
+//  an individual element. This is an updated version of SimpleList with added functionality
+//	function append adds an element to the end of the list. Function size returns the size of 
+//	the list. Function last return the last element of the list. Function first returns the 
+//	first element of the list. There is also some added functionality to add and remove that
+//	changes the size of the list depending on different circumstances
 
 package simpleList2;
 import java.util.Arrays;
